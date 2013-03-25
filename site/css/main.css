@@ -1,0 +1,19 @@
+h1, h2, h3, h4, h5, p {
+    margin: 0.5rem;
+    padding: 0;
+}
+.class-range {
+    font-size: 12px;
+}
+
+.ui {
+  text-align: center;
+}
+.content {
+  margin: 0 auto;
+  width: 90%;
+  max-width: 35em;
+  min-width: 500px;
+}
+
+

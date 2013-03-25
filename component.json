@@ -1,0 +1,7 @@
+{
+  "name": "modular-scale.js",
+  "version": "0.0.1",
+  "main": "./lib/modular-scale.js",
+  "dependencies": {
+  }
+}
