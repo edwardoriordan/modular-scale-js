@@ -41,24 +41,38 @@ jQuery(document).ready(function($) {
       $(this).parent().removeClass().addClass('ms' + $(this).val());
       applyFontSize();
     });
-  }
+  };
 
   var init = function() {
     $('#special-number').val(modular.get('importantNumber'));
     $('#font-size').val(modular.get('baseSize'));
     $('#ratio').val('golden');
-    
     $('#font-size').change();
     showHideNumVales();
-  }
+  };
 
   var showHideNumVales = function() {
     $('body').keydown(function(event) {
+      // 's'
       if (event.keyCode === 83) {
         $('.ui').toggle();
       }
     });
-  }
+
+    // $('h1, h2, h3, h4, h5, h6').keydown(function(event) {
+    //   var scale;
+    //   if (event.keyCode === 38) {
+    //     scale = getScale(this) + 1;
+    //     $(this).removeClass().addClass('ms' + scale);
+    //     applyFontSize();
+    //   }
+    //   if (event.keyCode === 40) {
+    //     scale = getScale(this) - 1;
+    //     $(this).removeClass().addClass('ms' + scale);
+    //     applyFontSize();
+    //   }
+    // });
+  };
 
   var headingScales = function() {
     $('.class-range').hide();
@@ -67,7 +81,11 @@ jQuery(document).ready(function($) {
     }, function() {
       $(this).find('.class-range').hide();
     });
-  }
+  };
+
+  var getScale = function(elem) {
+    return elem.className.replace('ms', '') * 1;
+  };
 
   headingScales();
   setUiEventHandler();
