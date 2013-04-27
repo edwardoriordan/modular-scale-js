@@ -34,6 +34,32 @@
                          <option value="minor_second">15:16 &ndash; minor second</option><option value="major_second">8:9 &ndash; major second</option><option value="minor_third">5:6 &ndash; minor third</option><option value="major_third">4:5 &ndash; major third</option><option value="fourth">3:4 &ndash; perfect fourth</option><option value="augmented_fourth">1:&radic;2 &ndash; aug. fourth / dim. fifth</option><option selected value="golden">1:1.618 &ndash; golden section</option><option value="fifth">2:3 &ndash; perfect fifth</option><option value="minor_sixth">5:8 &ndash; minor sixth</option><option value="major_sixth">3:5 &ndash; major sixth</option><option value="minor_seventh">9:16 &ndash; minor seventh</option><option value="major_seventh">8:15 &ndash; major seventh</option><option value="octave">1:2 &ndash; octave</option><option value="major_tenth">2:5 &ndash; major tenth</option><option value="major_eleventh">3:8 &ndash; major eleventh</option><option value="major_twelfth">1:3 &ndash; major twelfth</option><option value="double_octave">1:4 &ndash; double octave</option>
                         </select>   
                     </li>
+                    <li>
+                        <label class="text-input-label" for="line-height">Line Height</label>
+                        <input class="css-property" id="line-height" name="line-height" 
+                                type="range" value="1.2" min="1" max="2" step="0.025"
+                                onchange="lineheightvalue.value=value"
+                                data-css-property="lineHeight">
+                        <output for="line-height" id="lineheightvalue"></output>
+                    </li>
+<!--                <li>
+                        <label class="text-input-label" for="font-family">Font Family</label>
+                        <input id="font-family" name="font-family" 
+                                type="range" value="1.2" min="1" max="2" step="0.025"
+                                onchange="fontfamilyvalue.value=value"
+                                data-css-property="fontFamily">
+                        <output for="font-family" id="fontfamilyvalue"></output>
+                    </li> -->
+                    <li>
+                        <label class="select-input-label" for="font-family">Copy Type</label>
+                        <select id="font-family" name="font-family">
+                        </select> 
+                    </li>
+                    <li>
+                        <label class="select-input-label" for="font-family-headings">Heading Type</label>
+                        <select id="font-family-headings" name="font-family-headings">
+                        </select> 
+                    </li>
                 </ul>
             </div></div>
         
@@ -63,6 +89,7 @@
         <script src="lib/modular-scale.js"></script>
 
         <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="fonts.js"></script>
         <script src="ui.js"></script>
     </body>
 </html>

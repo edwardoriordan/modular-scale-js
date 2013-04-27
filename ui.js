@@ -1,5 +1,5 @@
 jQuery(document).ready(function($) {
-  
+
   var modular = new ModularScale({
     baseSize: 18,
     debug: true,
@@ -7,19 +7,22 @@ jQuery(document).ready(function($) {
     ratio: 'golden'
   });
 
+  addSelectlistContent('#font-family', FONT_OBJECTS);
+  addSelectlistContent('#font-family-headings', FONT_OBJECTS);
+
   var applyFontSize = function() {
     $('.ms0').css('font-size', modular.ms(0));
     $('.ms1').css('font-size', modular.ms(1));
-    $('.ms2').css('font-size', modular.ms(2));  
+    $('.ms2').css('font-size', modular.ms(2));
     $('.ms3').css('font-size', modular.ms(3));
-    $('.ms4').css('font-size', modular.ms(4));  
+    $('.ms4').css('font-size', modular.ms(4));
     $('.ms5').css('font-size', modular.ms(5));
     $('.ms6').css('font-size', modular.ms(6));
-    $('.ms7').css('font-size', modular.ms(7));  
+    $('.ms7').css('font-size', modular.ms(7));
     $('.ms8').css('font-size', modular.ms(8));
     $('.ms9').css('font-size', modular.ms(9));
     $('.intro').css('font-size', modular.ms(-1));
-  }
+  };
 
   var setUiEventHandler = function() {
     $('#special-number').change(function(){
@@ -41,6 +44,36 @@ jQuery(document).ready(function($) {
       $(this).parent().removeClass().addClass('ms' + $(this).val());
       applyFontSize();
     });
+
+    $('.class-range').change(function() {
+      $(this).parent().removeClass().addClass('ms' + $(this).val());
+      applyFontSize();
+    });
+
+    $('.css-property').change(function(event) {
+      var cssProperty = this.getAttribute('data-css-property');
+
+      var cssObj = {};
+      cssObj[cssProperty] = $(this).val();
+      $('.content').css(cssObj);
+    });
+
+    $('#font-family').on('change', function(){
+      var id = $(this).val();
+      $('.content').css({
+          'font-family': FONT_OBJECTS[id].fontName,
+          'font-weight': FONT_OBJECTS[id].weight,
+          'font-style': FONT_OBJECTS[id].style
+      });
+    });
+    $('#font-family-headings').on('change', function(){
+      var id = $(this).val();
+      $('h1,h2,h3,h4,h5,h6').css({
+          'font-family': FONT_OBJECTS[id].fontName,
+          'font-weight': FONT_OBJECTS[id].weight,
+          'font-style': FONT_OBJECTS[id].style
+      });
+    });
   };
 
   var init = function() {
@@ -55,7 +88,7 @@ jQuery(document).ready(function($) {
     $('body').keydown(function(event) {
       // 's'
       if (event.keyCode === 83) {
-        $('.ui').toggle();
+        $('.ui').toggleClass('hide');
       }
     });
 
