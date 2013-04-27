@@ -1,9 +1,9 @@
 jQuery(document).ready(function($) {
   
   var modular = new ModularScale({
-    // baseSize: 24,
+    baseSize: 22,
     debug: true,
-    importantNumber: 500,
+    importantNumber: 4724,
     ratio: 'golden'
   });
 

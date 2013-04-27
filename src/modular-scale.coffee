@@ -30,17 +30,18 @@ class ModularScale
 
     # if passed in options don't exist
     # use defaults instead;
-    @options.baseSize = @options.baseSize ? baseOptions.baseSize
-    @options.importantNumber = @options.importantNumber ? baseOptions.ratio
-    @options.debug = @options.debug ? baseOptions.debug
-    @options.ratio = if @options.ratio? then @ratios[@options.ratio] else @ratios[baseOptions.ratio]
-    # @options.baseSize = baseOptions.baseSize if not @options.baseSize?
-    # @options.importantNumber = baseOptions.ratio if not @options.importantNumber?
-    # @options.debug = baseOptions.debug if not @options.debug?
+    # @options.baseSize = @options.baseSize ? baseOptions.baseSize
+    # @options.importantNumber = @options.importantNumber ? baseOptions.ratio
+    # @options.debug = @options.debug ? baseOptions.debug
     # @options.ratio = if @options.ratio? then @ratios[@options.ratio] else @ratios[baseOptions.ratio]
+    @options.baseSize = baseOptions.baseSize if not @options.baseSize?
+    @options.importantNumber = baseOptions.ratio if not @options.importantNumber?
+    @options.debug = baseOptions.debug if not @options.debug?
+    @options.ratio = if @options.ratio? then @ratios[@options.ratio] else @ratios[baseOptions.ratio]
 
     @_createScale()
 
+  # API
   ms: (multiple) ->
     indexOfBase = @scale.indexOf(@options.baseSize);
     @scale[indexOfBase + multiple];
@@ -53,6 +54,7 @@ class ModularScale
   get: (prop) ->
     @options[prop]
 
+  # Private
   _createScale: () ->
     @scale = [];
     @scale = @scale.concat(
@@ -60,17 +62,12 @@ class ModularScale
       @_createFontValuesFrom(@options.importantNumber)
     ).sort((a, b) -> a - b);
 
-    # @scale.push(
-    #   @_createFontValuesFrom(@options.baseSize)...,
-    #   @_createFontValuesFrom(@options.importantNumber)...
-    # ).sort((a, b) -> a - b);
-
     @_debug() if @options.debug 
     
     return @scale
 
   _createFontValuesFrom: (sizeValue) ->
-    @_createFontValue(sizeValue, i) for i in [-10..10]
+    @_createFontValue(sizeValue, i) for i in [-15..15]
 
   _createFontValue: (sizeValue, i) ->
     value = Math.pow(@options.ratio, i) * sizeValue;
@@ -89,7 +86,7 @@ class ModularScale
   _makeMsUrl: (px1, px2, ra1) -> 
     "http://modularscale.com/scale/?px1="+px1+"&px2="+px2+"&ra1="+ra1
 
-# export
+# Export
 if module? && require?
   module.exports = ModularScale 
 else
