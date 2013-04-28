@@ -4,6 +4,7 @@ class ModularScale
     ratio: 'golden'
     baseSize: 16
     importantNumber: 100
+    roundToDecimalPlaces: 2
     debug: false
 
   constructor: (@options = baseOptions) ->
@@ -29,22 +30,19 @@ class ModularScale
       golden : 1/2 + (Math.sqrt(5) / 2)
 
     # if passed in options don't exist
-    # use defaults instead;
-    # @options.baseSize = @options.baseSize ? baseOptions.baseSize
-    # @options.importantNumber = @options.importantNumber ? baseOptions.ratio
-    # @options.debug = @options.debug ? baseOptions.debug
-    # @options.ratio = if @options.ratio? then @ratios[@options.ratio] else @ratios[baseOptions.ratio]
+    # use defaults instead
     @options.baseSize = baseOptions.baseSize if not @options.baseSize?
     @options.importantNumber = baseOptions.ratio if not @options.importantNumber?
     @options.debug = baseOptions.debug if not @options.debug?
+    @options.roundToDecimalPlaces = baseOptions.roundToDecimalPlaces if not @options.roundToDecimalPlaces?
     @options.ratio = if @options.ratio? then @ratios[@options.ratio] else @ratios[baseOptions.ratio]
 
     @_createScale()
 
   # API
   ms: (multiple) ->
-    indexOfBase = @scale.indexOf(@options.baseSize);
-    @scale[indexOfBase + multiple];
+    indexOfBase = @scale.indexOf(@options.baseSize)
+    @_roundToDecimalPlaces(@scale[indexOfBase + multiple], @options.roundToDecimalPlaces)
 
   set: (prop, value) ->
     @options[prop] = value
@@ -70,8 +68,17 @@ class ModularScale
     @_createFontValue(sizeValue, i) for i in [-15..15]
 
   _createFontValue: (sizeValue, i) ->
-    value = Math.pow(@options.ratio, i) * sizeValue;
-    Math.round(value*1000)/1000;
+    value = Math.pow(@options.ratio, i) * sizeValue
+    @_roundToDecimalPlaces(value, 4)
+
+  _roundToDecimalPlaces: (number, decimalPlaces) ->
+    decimalPlaces = 0 if decimalPlaces < 0
+    if decimalPlaces > 1
+      Math.round( number * (10 * decimalPlaces) ) / (10 * decimalPlaces)
+    else
+      Math.round(number)
+    
+    
 
   _debug: ->
     console.log("------------------------------")
