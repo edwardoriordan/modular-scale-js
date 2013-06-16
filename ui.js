@@ -8,7 +8,7 @@ jQuery(document).ready(function($) {
   });
 
   addSelectlistContent('#font-family', FONT_OBJECTS);
-  addSelectlistContent('#font-family-headings', FONT_OBJECTS);
+  addSelectlistContent('.font-family-headings', FONT_OBJECTS);
 
   var applyFontSize = function() {
     $('.ms0').css('font-size', modular.ms(0));
@@ -40,16 +40,6 @@ jQuery(document).ready(function($) {
       applyFontSize();
     });
 
-    $('.class-range').change(function() {
-      $(this).parent().removeClass().addClass('ms' + $(this).val());
-      applyFontSize();
-    });
-
-    $('.class-range').change(function() {
-      $(this).parent().removeClass().addClass('ms' + $(this).val());
-      applyFontSize();
-    });
-
     $('.css-property').change(function(event) {
       var cssProperty = this.getAttribute('data-css-property');
 
@@ -66,9 +56,22 @@ jQuery(document).ready(function($) {
           'font-style': FONT_OBJECTS[id].style
       });
     });
-    $('#font-family-headings').on('change', function(){
+    // $('#font-family-headings').on('change', function(){
+    //   var id = $(this).val();
+    //   $('h1,h2,h3,h4,h5,h6').css({
+    //       'font-family': FONT_OBJECTS[id].fontName,
+    //       'font-weight': FONT_OBJECTS[id].weight,
+    //       'font-style': FONT_OBJECTS[id].style
+    //   });
+    // });
+
+    $('.class-range').change(function() {
+      $(this).parents('h1, h2, h3, h4, h5, h6').removeClass().addClass('ms' + $(this).val());
+      applyFontSize();
+    });
+    $('.font-family-headings').on('change', function(){
       var id = $(this).val();
-      $('h1,h2,h3,h4,h5,h6').css({
+      $(this).parents('h1, h2, h3, h4, h5, h6').css({
           'font-family': FONT_OBJECTS[id].fontName,
           'font-weight': FONT_OBJECTS[id].weight,
           'font-style': FONT_OBJECTS[id].style
@@ -108,11 +111,11 @@ jQuery(document).ready(function($) {
   };
 
   var headingScales = function() {
-    $('.class-range').hide();
+    $('.HeadingControls').hide();
     $('h1, h2, h3, h4, h5, h6').hover(function() {
-      $(this).find('.class-range').show();
+      $(this).find('.HeadingControls').show();
     }, function() {
-      $(this).find('.class-range').hide();
+      $(this).find('.HeadingControls').hide();
     });
   };
 

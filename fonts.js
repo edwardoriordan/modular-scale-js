@@ -1,7 +1,6 @@
 var FONT_STRINGS = [
   'Merriweather:400,300,700,900:latin', 
-  'Open+Sans:300italic,800italic,400,300,800:latin',
-  'Kavoon::latin'
+  'Open+Sans:400,300,800:latin'
 ];
 
 var FONT_OBJECTS = [];
