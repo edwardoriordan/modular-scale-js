@@ -1,4 +1,4 @@
-Modular Scales in JavaScript
+Modular Scales in JavaScript.
 ================
 
 > A modular scale, like a musical scale, is a prearranged set of harmonious proportions.
