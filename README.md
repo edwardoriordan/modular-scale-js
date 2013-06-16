@@ -1,7 +1,5 @@
-modular-scale-js
+Modular Scales in JavaScript
 ================
-
-Modular Scales in JavaScript.
 
 > A modular scale, like a musical scale, is a prearranged set of harmonious proportions.
 > —Robert Bringhurst
@@ -25,11 +23,11 @@ var modularScaleGolden = new ModularScale({
 
 #### baseSize, importantNumber, ratio
 
-See http://alistapart.com/article/more-meaningful-typography for details as to what these are
+See http://alistapart.com/article/more-meaningful-typography for details as to what these are.
 
 #### roundToDecimalPlaces
 
-The number of decimal places to round the outputted values to
+The number of decimal places to round the outputted values to.
 
 #### debug
 
@@ -42,7 +40,6 @@ Show the modular scale in the browser console with link to the similar modular s
 var firstNumberInScale = modularScaleGolden.ms(1);
 var secondNumberInScale = modularScaleGolden.ms(2);
 var eighthNumberInScale = modularScaleGolden.ms(8);
-
 ```
 
 ### Get property (baseSize, importantNumber, etc)
@@ -50,7 +47,6 @@ var eighthNumberInScale = modularScaleGolden.ms(8);
 ```javascript
 
 var whatWastheBaseSizeAgain = modularScaleGolden.get('baseSize');
-
 ```
 
 ### Set property (baseSize, importantNumber, etc)
@@ -58,29 +54,30 @@ var whatWastheBaseSizeAgain = modularScaleGolden.get('baseSize');
 ```javascript
 
 modularScaleGolden.set('baseSize', 24px);
-
 ```
 
 ## Examples
 
 ### Basic typesetting example
 
-See http://edwardoriordan.github.com/modular-scale-js
+See http://edwardoriordan.github.com/modular-scale-js.
 
 ### Basic canvas example
 
-Coming soon
+Coming soon.
 
-## Tests
+### Tests
 
 There are Jasmine tests in the /test folder.
 
 ## Addition features required
 
-* Work with various css font units (em, rem, percent, etc)
-* Allow multiple important numbers
+* Work with various css font units (em, rem, percent, etc).
+* Allow multiple important numbers.
 
 ## Thanks
+
+Thanks to all the bellow for ideas and inspiration.
 
 * Tim Brown (@timbrown) - modularscale.com
 * Scott Kellum (@scottkellum) - github.com/Team-Sass/modular-scale
